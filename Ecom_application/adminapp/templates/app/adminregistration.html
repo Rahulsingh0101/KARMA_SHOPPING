@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords" content="" />
+    <meta name="author" content="" />
+    <meta name="robots" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="GetSkills  : GetSkills Online Learning Admin Bootstrap 5 Template" />
+    <meta property="og:title" content="GetSkills  : GetSkills Online Learning  Admin Bootstrap 5 Template" />
+    <meta property="og:description" content="GetSkills  : GetSkills Online Learning  Admin Bootstrap 5 Template" />
+    <meta property="og:image" content="https://getskills.dexignzone.com/xhtml/social-image.png" />
+    <meta name="format-detection" content="telephone=no">
+
+    <!-- PAGE TITLE HERE -->
+    <title>HRM</title>
+
+    <!-- FAVICONS ICON -->
+    <link rel="shortcut icon" type="image/png" href="{% static 'adminn/images/favicon.png' %}" />
+
+    <link href="{% static 'adminn/vendor/jquery-nice-select/css/nice-select.css' %}" rel="stylesheet">
+    <link href="{% static 'adminn/css/style.css' %}" rel="stylesheet">
+
+</head>
+
+<body style="background-color:#e6b681;">
+    <div class="row">
+        <div class="col-lg-2 m-auto mt-5"></div>
+        <div class="col-lg-4 m-auto mt-5">
+            <img src="images/loginform.png" alt="" style="width:100%; height:auto; margin-top: 120px;">
+        </div>
+
+        <div class="col-lg-4" style="margin-top: 120px;">
+            <div class="card rounded-3 effect2">
+                <div class="card-header">
+                    <h4 class="card-title">
+                        Please Registration To Start Your Session</h4>
+                </div>
+                <div class="card-body">
+                    <div class="basic-form">
+                        {% comment %} <form class="form-valide-with-icon needs-validation" novalidate> {% endcomment %}
+                            <form  action="/admin_registration/" method="post" >
+                                {% csrf_token %}
+                            <div class="mb-3">
+                                <label class="text-label form-label" for="validationCustomUsername">Username</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"> <i class="fa fa-user" style="color:#ff9618;"></i>
+                                    </span>
+                                    <input type="text" name='username' class="form-control" id="validationCustomUsername"
+                                        placeholder="Enter a username.." required>
+                                    <div class="invalid-feedback">
+                                        Please Enter a username.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="text-label form-label" for="validationCustomUsername">UserEmail</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"> <i class="fa fa-user" style="color:#ff9618;"></i>
+                                    </span>
+                                    <input type="email" name='email' class="form-control" id="validationCustomUsername"
+                                        placeholder="Enter a userMail.." required>
+                                    <div class="invalid-feedback">
+                                        Please Enter a userEmail.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="text-label form-label" for="validationCustomUsername">User_phone</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"> <i class="fa fa-user" style="color:#ff9618;"></i>
+                                    </span>
+                                    <input type="text" name='phone' class="form-control" id="validationCustomUsername"
+                                        placeholder="Enter a phone.." required>
+                                    <div class="invalid-feedback">
+                                        Please Enter a phone.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="text-label form-label" for="dlab-password">Password *</label>
+                                <div class="input-group transparent-append">
+                                    <span class="input-group-text"> <i class="fa fa-lock" style="color:#ff9618;"></i>
+                                    </span>
+                                    <input type="password" name='password' class="form-control" id="dlab-password"
+                                        placeholder="Choose a safe one.." required>
+                                    <span class="input-group-text show-pass">
+                                        <i class="fa fa-eye-slash"></i>
+                                        <i class="fa fa-eye"></i>
+                                    </span>
+                                    <div class="invalid-feedback">
+                                        Please Enter a username.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck2"
+                                        required>
+                                    <label class="form-check-label" for="invalidCheck2">
+                                        Check Me out
+                                    </label>
+                                </div>
+                            </div>
+                            <button type="submit" value="submit" class="btn me-2 btn-primary">Register</button>
+                            If not have an account?
+                            {% comment %} <a href="registration.html" class="btn btn-info">Register</a> {% endcomment %}
+                            {% comment %} <a href="/login/">Already have an account ? Login</a> {% endcomment %}
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2 m-auto mt-5"></div>
+
+        <!--**********************************
+            Footer start
+        ***********************************-->
+
+        <!--**********************************
+            Footer end
+        ***********************************-->
+
+        <!--**********************************
+           Support ticket button start
+        ***********************************-->
+
+        <!--**********************************
+           Support ticket button end
+        ***********************************-->
+
+
+    </div>
+    </div>
+    <!--**********************************
+        Main wrapper end
+    ***********************************-->
+
+    <!--**********************************
+        Scripts
+    ***********************************-->
+    <!-- Required vendors -->
+    <script src="{% static 'adminn/vendor/global/global.min.js' %}"></script>
+
+    <script src="{% static 'adminn/vendor/jquery-nice-select/js/jquery.nice-select.min.js' %}"></script>
+
+    <script src="{% static 'adminn/js/custom.js' %}"></script>
+    <script src="{% static 'adminn/js/dlabnav-init.js' %}"></script>
+
+
+    <script>
+        (function () {
+            'use strict'
+
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.querySelectorAll('.needs-validation')
+
+            // Loop over them and prevent submission
+            Array.prototype.slice.call(forms)
+                .forEach(function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (!form.checkValidity()) {
+                            event.preventDefault()
+                            event.stopPropagation()
+                        }
+
+                        form.classList.add('was-validated')
+                    }, false)
+                })
+        })()
+    </script>
+</body>
+
+</html>
