@@ -248,6 +248,7 @@
                                       <tr>
                                           <th>No.</th>
                                           <th>Product Name </th>
+                                          <th>Product image </th>
                                           <th>Discount Price </th>
                                           <th>Offer Price </th>
                                          
@@ -258,6 +259,7 @@
                                       <tr>
                                           <td>{{forloop.counter}}</td>
                                           <td><b>{{a.title}}</b></td>
+                                          <td><img class="img-fluid" src="{{a.product_image.url}}" height="100" width="90" alt=""></td>
                                           <td>{{a.discounted_price}}</td>
                                           <td>{{a.selling_price}}</td>
                                           

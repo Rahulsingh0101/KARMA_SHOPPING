@@ -235,7 +235,7 @@
                     <div class="card-body">
                       <div class="widget-courses align-items-center d-flex justify-content-between style-1 flex-wrap">
                         <div class="d-flex">
-                          <img src="images/svg/degree-certificate.svg" alt="" />
+                          <img src="{% static 'adminn/images/svg/degree-certificate.svg' %}" alt="" />
                           <div class="ms-4">
                             <h4>{{dc}}</h4>
                             <span>Total Orders</span>
@@ -251,7 +251,7 @@
                     <div class="card-body">
                       <div class="widget-courses align-items-center d-flex justify-content-between style-1 flex-wrap">
                         <div class="d-flex">
-                          <img src="images/svg/cup.svg" alt="" />
+                          <img src="{% static 'adminn/images/svg/cup.svg' %}" alt="" />
                           <div class="ms-4">
                             <h4>{{ec}}</h4>
                             <span>Total Products</span>
@@ -267,7 +267,7 @@
                     <div class="card-body">
                       <div class="widget-courses align-items-center d-flex justify-content-between style-1 flex-wrap">
                         <div class="d-flex">
-                          <img src="images/svg/microscope.svg" alt="" />
+                          <img src="{% static 'adminn/images/svg/microscope.svg' %}" alt="" />
                           <div class="ms-4">
                             <h4>15</h4>
                             <span>Enquiries</span>
@@ -305,7 +305,7 @@
                               <td>01</td>
                               <td>#54605</td>
                               <td>
-                                <b>{{b.name}}</b> <br /> <span class="text-primary">+91 9876543210</span>
+                                <b>{{b.name}}</b> <br /> <span class="text-primary">{{b.phone}}</span>
                               </td>
                               <td>{{b.title}}</td>
                               <td>Cash</td>
