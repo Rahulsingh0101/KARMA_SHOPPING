@@ -227,3 +227,5 @@ def Customer_registration(request):
                                  zipcode=zipcode,title=titl,total=tit,
                                  ordered_date=ordered_date)
         return redirect('/confirmation/')
+
+

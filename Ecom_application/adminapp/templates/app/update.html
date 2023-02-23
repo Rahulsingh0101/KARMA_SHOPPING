@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords" content="" />
+    <meta name="author" content="" />
+    <meta name="robots" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="GetSkills  : GetSkills Online Learning Admin Bootstrap 5 Template" />
+    <meta property="og:title" content="GetSkills  : GetSkills Online Learning  Admin Bootstrap 5 Template" />
+    <meta property="og:description" content="GetSkills  : GetSkills Online Learning  Admin Bootstrap 5 Template" />
+    <meta property="og:image" content="https://getskills.dexignzone.com/xhtml/social-image.png" />
+    <meta name="format-detection" content="telephone=no">
+
+    <!-- PAGE TITLE HERE -->
+    <title>HRM</title>
+
+    <!-- FAVICONS ICON -->
+    <link rel="shortcut icon" type="image/png" href="{% static 'adminn/images/favicon.png' %}" />
+
+    <link href="{% static 'adminn/vendor/jquery-nice-select/css/nice-select.css' %}" rel="stylesheet">
+    <link href="{% static 'adminn/css/style.css' %}" rel="stylesheet">
+
+</head>
+
+<body style="background-color:#e6b681;">
+    <div class="row">
+        <div class="col-lg-2 m-auto mt-5"></div>
+        <div class="col-lg-4 m-auto mt-5">
+            <img src="images/loginform.png" alt="" style="width:100%; height:auto; margin-top: 120px;">
+        </div>
+
+        <div class="col-lg-4" style="margin-top: 120px;">
+            <div class="card rounded-3 effect2">
+                <div class="card-header">
+                    <h4 class="card-title">
+                        UPDATE PRODUCT DATA </h4>
+                </div>
+                <div class="card-body">
+                    <div class="basic-form">
+                        {% comment %} <form class="form-valide-with-icon needs-validation" novalidate> {% endcomment %}
+                            <form  action="/update_product_data/" method="post" >
+                                {% csrf_token %}
+                                <div class="mb-4">
+                                    <label class="mb-1"><strong>TITLE </strong></label>
+                                    <input type="text" class="form-control mt-10" name="title" value="{{res.title}}" placeholder="enter  title">
+                                </div>
+                           <div class="mb-4">
+                            <label class="mb-1"><strong> SELLING PRICE </strong></label>
+                            <input type="number" class="form-control mt-10" name="selling_price" value="{{res.selling_price}}" placeholder="enter SELLING PRICE">
+                        </div>                
+                                </div>
+                            </div>
+                            <input type="hidden" name="id" value="{{res.id}}">
+                            <div class="mb-4">
+                                <label class="mb-1"><strong>DISCOUNT PRICE </strong></label>
+                                <input type="number" class="form-control mt-10" name="discounted_price" value="{{res.discounted_price}}" placeholder="enter DISCOUNT PRICE">
+                            </div>
+                            <div class="mb-4">
+                                <label class="mb-1"><strong>DESCRIPTION </strong></label>
+                                <input type="text" class="form-control mt-10" name="description" value="{{res.description}}" placeholder="enter  DESCRIPTION">
+                            </div>
+                            <div class="mb-4">
+                                <label class="mb-1"><strong>BRAND </strong></label>
+                                <input type="text" class="form-control mt-10" name="brand" value="{{res.brand}}" placeholder="enter BRAND">
+                            </div>
+                           
+                            {% comment %} <div class="mb-4">
+                                <label class="mb-1"><strong>category</strong></label>
+                                <select id="cars" name="category">
+                                  {% for cat in category %}
+                                  <option value="{{cat.id}}">{{cat.name}}</option>
+                                  {% endfor %}
+                                </select>
+                            </div> {% endcomment %}
+                            {% comment %} <div class="mb-4">
+                                <label class="mb-1"><strong>subcategory</strong></label>
+                                <select id="cars" name="subcategory"  >
+                                  {% for scat in subcat %}
+                                  <option value="{{scat.id}}">{{scat.name}}</option>
+                                  {% endfor %}
+                                </select>
+                            </div> {% endcomment %}
+                            <div class="mb-4">
+                                <label class="mb-1"><strong>product image</strong></label>
+                                <img class="img-fluid" src="{{res.product_image.url}}" height="100" width="90" alt="">
+                                <input type="file" class="form-control mt-10" name="product_image" value="{{res.product_image.url}}" placeholder="Ex.350">
+                            </div>
+                            
+                            <button type="submit" value="submit" class="btn me-2 btn-primary">UPDATE_DATA</button>
+                            
+                            {% comment %} <a href="registration.html" class="btn btn-info">Register</a> {% endcomment %}
+                            {% comment %} <a href="/login/">Already have an account ? Login</a> {% endcomment %}
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2 m-auto mt-5"></div>
+
+        <!--**********************************
+            Footer start
+        ***********************************-->
+
+        <!--**********************************
+            Footer end
+        ***********************************-->
+
+        <!--**********************************
+           Support ticket button start
+        ***********************************-->
+
+        <!--**********************************
+           Support ticket button end
+        ***********************************-->
+
+
+    </div>
+    </div>
+    <!--**********************************
+        Main wrapper end
+    ***********************************-->
+
+    <!--**********************************
+        Scripts
+    ***********************************-->
+    <!-- Required vendors -->
+    <script src="{% static 'adminn/vendor/global/global.min.js' %}"></script>
+
+    <script src="{% static 'adminn/vendor/jquery-nice-select/js/jquery.nice-select.min.js' %}"></script>
+
+    <script src="{% static 'adminn/js/custom.js' %}"></script>
+    <script src="{% static 'adminn/js/dlabnav-init.js' %}"></script>
+
+
+    <script>
+        (function () {
+            'use strict'
+
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.querySelectorAll('.needs-validation')
+
+            // Loop over them and prevent submission
+            Array.prototype.slice.call(forms)
+                .forEach(function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (!form.checkValidity()) {
+                            event.preventDefault()
+                            event.stopPropagation()
+                        }
+
+                        form.classList.add('was-validated')
+                    }, false)
+                })
+        })()
+    </script>
+</body>
+
+</html>

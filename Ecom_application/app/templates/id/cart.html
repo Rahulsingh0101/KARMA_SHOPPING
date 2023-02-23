@@ -154,12 +154,8 @@
                                     <h5 id='selling_price'>{{p.price}}</h5>
                                 </td>
                            
-                                
                                     {% comment %} <div class="product_count">
-                                        {% for product_id, product_qty in cart.items %}
-                                        {{item.name}}
-
-                                        {% endfor %}
+                     
                                         <input type="text" name="qty" id="sst" maxlength="12" value="{{p.product.product_qty}}" title="Quantity:"
                                             class="input-text qty">
                                         <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
@@ -167,11 +163,19 @@
                                         <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
                                             class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
                                    
-                                        </div> {% endcomment %}
-
+                                        </div>  {% endcomment %}
+                                       
                                 
                                 <td>
                                     <h5>{{p.product_qty}}</h5>
+                                    {% comment %} <input type="text" name="qty" id="sst" maxlength="12" value="{{p.product.product_qty}}" title="Quantity:"
+                                    class="input-text qty">
+                                    <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
+                                            class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
+                                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
+                                            class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
+                                    {% endcomment %}
+
                                 </td>
                                 <td>
                                     <h5 id='total'>{{p.total}}</h5>
@@ -322,6 +326,32 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	<script src="{% static 'js/main.js' %}"></script>
 
 <script>
+
+const quantityElem = document.getElementById('quantity');
+const totalPriceElem = document.getElementById('total-price');
+const increaseBtn = document.getElementById('increase-btn');
+const decreaseBtn = document.getElementById('decrease-btn');
+
+let quantity = 1;
+let price = 10;
+
+function updateTotalPrice() {
+  totalPriceElem.textContent = (quantity * price).toFixed(2);
+}
+
+increaseBtn.addEventListener('click', function() {
+  quantity++;
+  quantityElem.textContent = quantity;
+  updateTotalPrice();
+});
+
+decreaseBtn.addEventListener('click', function() {
+  if (quantity > 1) {
+    quantity--;
+    quantityElem.textContent = quantity;
+    updateTotalPrice();
+  }
+});
   
 
 </script>

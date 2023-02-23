@@ -46,7 +46,13 @@ def adminorders(request):
     return render(request, 'app/orders.html',{'bc':bc})       
 
 def adminenquiries(request):
-    return render(request, 'app/enquiries.html')           
+    return render(request, 'app/enquiries.html')     
+
+def update(request):
+    category = Category.objects.all()
+    subcat = SubCategory.objects.all()
+    return render(request, 'app/update.html',{'category':category,
+                                            'subcat':subcat,})           
     
 def adminregistration(request):
     return render(request, 'app/adminregistration.html')  
@@ -114,5 +120,55 @@ def productadd(request):
                                   subcategory=sub,
                                   product_image=product_image)
 
-        return redirect('/')                       
+        return redirect('/')     
+
+def remove_product(request, id):
+    Addproduct.objects.filter(id=id).delete()
+    return redirect('/adminproducts/')  
+
+
+# def hjhgjhgjh(request):
+#     if request.method =='POST':
+#         uid = request.POST['uid'] 
+#         first_name = request.POST['first_name'] 
+#         last_name = request.POST['last_name'] 
+#         company_name = request.POST['company'] 
+#         Emai_name = request.POST['Email'] 
+#         phone_number = request.POST['Phone'] 
+
+#         Student.objects.filter(id=uid).update(first_name=first_name,last_name=last_name,
+#                                               company_name=company_name,Email_name=Emai_name,
+#                                               phone_number=phone_number),
+
+#         return redirect('/data')
+
+
+def update_product(request,id):
+    res = Addproduct.objects.get(id = id)
+    return render(request,'app/update.html',context={'res':res})
+
+
+
+def update_product_data(request):
+    if request.method == 'POST':
+        id = request.POST['id']
+        title = request.POST['title']   
+        selling_price = request.POST['selling_price']   
+        discounted_price = request.POST['discounted_price']   
+        description = request.POST['description']   
+        brand = request.POST['brand']   
+        # category = request.POST['category']   
+        # subcategory = request.POST['subcategory'] 
+        # product_image = request.FILES.get('product_image')
+        # cat = Category.objects.get(id=category)
+        # sub = SubCategory.objects.get(id=subcategory)
+        
+        Addproduct.objects.filter(id=id).update(title=title,
+                                            selling_price=selling_price,
+                                            discounted_price=discounted_price,
+                                            description=description,
+                                            brand=brand,
+                                          )
+
+        return redirect('/')   
 

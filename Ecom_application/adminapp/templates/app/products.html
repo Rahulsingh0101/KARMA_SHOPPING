@@ -239,7 +239,7 @@
                       <div class="card-body">
                         <div class="widget-heading p-2 d-flex justify-content-between align-items-center">
                           <h4 class="card-title">All Products</h4>
-                          <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModalCenter"><i class="bi-bag-plus-fill"></i> Add Product</button>
+                          <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModalCenter"><i class="bi-bag-plus-fill"></i> Adds Product</button>
                         </div><hr>
                           <div class="table-responsive mt-10">
                             
@@ -251,6 +251,8 @@
                                           <th>Product image </th>
                                           <th>Discount Price </th>
                                           <th>Offer Price </th>
+                                          <th>REMOVE </th>
+                                          <th>UPDATE </th>
                                          
                                       </tr>
                                   </thead>
@@ -262,7 +264,8 @@
                                           <td><img class="img-fluid" src="{{a.product_image.url}}" height="100" width="90" alt=""></td>
                                           <td>{{a.discounted_price}}</td>
                                           <td>{{a.selling_price}}</td>
-                                          
+                                          <td> <a class="gray_btn" href="{% url 'remove_product' a.id %}">REMOVE</a></td>
+                                          <td>  <a href="/update_product/{{a.id}}/" class="btn btn-primary">UPDATE</a></td>
                                       </tr>
                                       {% endfor %}
                                   </tbody>
@@ -292,7 +295,7 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Add Product</h5>
+                        <h5 class="modal-title">Adds Product</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal">
                         </button>
                     </div>
