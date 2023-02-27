@@ -9,4 +9,7 @@ class Adminuser(models.Model):
     phone=models.CharField(max_length=10)
     password=models.CharField(max_length=100,blank=True,null=True)
     is_active=models.BooleanField(default=True)
+    adress=models.CharField(max_length=100)
+    image = models.ImageField(upload_to="productimg")
+
 

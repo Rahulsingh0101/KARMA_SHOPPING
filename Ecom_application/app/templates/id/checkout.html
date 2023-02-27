@@ -196,8 +196,8 @@
                             <h2>Your Order</h2>
                             {% for item in carts %}
                             <ul class="list">
-                                <li><a href="#">Product <span>Total</span></a></li>
-                                <li><a href="#">{{item.title}}<span class="middle"></span> <span class="last">{{cart.product.selling_price}} </a></li>
+                                <li><a href="#">Product <span>Total</span>_________quantity</a></li>
+                                <li><a href="#">{{item.title}}<span  class="middle"></span> {{item.product_qty}}<span class="last">{{cart.product.selling_price}} </a></li>
                             </ul>
                             <ul class="list list_2">
                                 

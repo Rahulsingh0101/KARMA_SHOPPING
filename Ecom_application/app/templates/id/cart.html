@@ -168,17 +168,33 @@
                                 
                                 <td>
                                     <h5>{{p.product_qty}}</h5>
-                                    {% comment %} <input type="text" name="qty" id="sst" maxlength="12" value="{{p.product.product_qty}}" title="Quantity:"
+                                     {% comment %} <input type="text" name="qty" id="sst" maxlength="12" value="{{p.product.product_qty}}" title="Quantity:"
                                     class="input-text qty">
-                                    <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
+                                    <button onclick="var result = document.getElementById('sst'); var sst = result.value; var sel = document.getElementById('selling_price').innerHTML; if( !isNaN( sst ));result.value++;document.getElementsByTagName('h5').innerHTML='sel*result.value';return false;"
                                             class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
                                         <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
                                             class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
-                                    {% endcomment %}
+                                     {% endcomment %}
+
+                                     
+                                     <div>
+                                        <label for="quantity-input">Quantity:</label>
+                                        <input type="number" id="quantity-input" value="1" min="1">
+                                      </div>
+                                     
+                                      <button id="update-button">Update</button>
+                                      
+
+                                      
+
 
                                 </td>
                                 <td>
                                     <h5 id='total'>{{p.total}}</h5>
+                                    <div>
+                                        <label>Total:</label>
+                                        <span id="total-output">{{p.price}}</span>
+                                      </div>
 
                                     <div class="checkout_btn_inner d-flex align-items-center">
                                         <a class="gray_btn" href="{% url 'remove_cart' p.id %}">REMOVE</a>
@@ -327,32 +343,30 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 <script>
 
-const quantityElem = document.getElementById('quantity');
-const totalPriceElem = document.getElementById('total-price');
-const increaseBtn = document.getElementById('increase-btn');
-const decreaseBtn = document.getElementById('decrease-btn');
 
-let quantity = 1;
-let price = 10;
 
-function updateTotalPrice() {
-  totalPriceElem.textContent = (quantity * price).toFixed(2);
-}
+// JavaScript code
+const price = document.getElementById("selling_price").innerHTML; // Set the price per item
+let quantity = 1; // Set the initial quantity
+let total = price * quantity; // Calculate the initial total
 
-increaseBtn.addEventListener('click', function() {
-  quantity++;
-  quantityElem.textContent = quantity;
-  updateTotalPrice();
+// Get the necessary DOM elements
+const quantityInput = document.getElementById('quantity-input');
+const totalOutput = document.getElementById('total-output');
+const updateButton = document.getElementById('update-button');
+
+// Update the total when the quantity changes
+quantityInput.addEventListener('input', () => {
+  quantity = parseInt(quantityInput.value);
+  total = price * quantity;
+  totalOutput.textContent = `$${total.toFixed(2)}`;
 });
 
-decreaseBtn.addEventListener('click', function() {
-  if (quantity > 1) {
-    quantity--;
-    quantityElem.textContent = quantity;
-    updateTotalPrice();
-  }
+// Update the total when the button is clicked
+updateButton.addEventListener('click', () => {
+  totalOutput.textContent = `$${total.toFixed(2)}`;
 });
-  
+
 
 </script>
 

@@ -14,6 +14,13 @@ from django.core.files.storage import FileSystemStorage
 def adminlogin(request):
     return render(request, 'app/login.html')
 
+def profile(request):
+    c = Adminuser.objects.all()
+    return render(request, 'app/profile.html', {'c':c})   
+
+def upprofile(request):
+    return render (request, 'app/upprofile.html')     
+
 def showregistration(request):
     ab = Adminuser.objects.all()
     return render(request, 'app/registrations.html', {'ab':ab}) 
@@ -64,6 +71,8 @@ def admin_registration(request):
         name = request.POST['username']
         Email = request.POST['email']
         phone = request.POST['phone']
+        adress = request.POST['adress']
+        image = request.FILES.get('image')
         password = make_password(request.POST['password'])
         if Adminuser.objects.filter(phone=phone).exists():
             messages.error(request, "phone number already exists")
@@ -75,7 +84,9 @@ def admin_registration(request):
 
         else:
             Adminuser.objects.create(name=name, email=Email,
-                                phone=phone, password=password)
+                                phone=phone, adress=adress,
+                                 image=image, password=password,
+                                )
             return redirect('/adminlogin/')
 
 def admin_login(request):
@@ -126,6 +137,10 @@ def remove_product(request, id):
     Addproduct.objects.filter(id=id).delete()
     return redirect('/adminproducts/')  
 
+def remove_register_user(request, id):
+    Adminuser.objects.filter(id=id).delete()
+    return redirect('/showregistration/')  
+
 
 # def hjhgjhgjh(request):
 #     if request.method =='POST':
@@ -170,5 +185,27 @@ def update_product_data(request):
                                             brand=brand,
                                           )
 
-        return redirect('/')   
+        return redirect('/')  
 
+                                            
+
+def update_registration(request,id):
+    up = Adminuser.objects.get(id = id)
+    return render(request,'app/upprofile.html',context={'up':up})
+    #(request,'app/profile.html',context={'up':up})
+
+
+def update_registration_data(request):
+    if request.method == 'POST':
+        id = request.POST.get('id')
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        phone = request.POST.get('phone')
+        adress = request.POST.get('adress')
+
+        Adminuser.objects.filter(id=id).update( name=name,
+                                               email=email,
+                                               phone=phone,
+                                               adress=adress )
+
+    return redirect('/')                                           

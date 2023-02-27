@@ -5,5 +5,5 @@ from adminapp.models import *
 
 @admin.register((Adminuser))
 class AdminuserModelAdmin(admin.ModelAdmin):
-    list_display=['name','email','phone','password','is_active']                 
+    list_display=['name','email','phone','password','is_active','adress','image']                 
 

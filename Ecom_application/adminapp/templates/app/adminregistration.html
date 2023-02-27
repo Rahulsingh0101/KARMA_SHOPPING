@@ -42,7 +42,7 @@
                 <div class="card-body">
                     <div class="basic-form">
                         {% comment %} <form class="form-valide-with-icon needs-validation" novalidate> {% endcomment %}
-                            <form  action="/admin_registration/" method="post" >
+                            <form  action="/admin_registration/" method="post" enctype="multipart/form-data">
                                 {% csrf_token %}
                             <div class="mb-3">
                                 <label class="text-label form-label" for="validationCustomUsername">Username</label>
@@ -56,6 +56,7 @@
                                     </div>
                                 </div>
                             </div>
+                            
                             <div class="mb-3">
                                 <label class="text-label form-label" for="validationCustomUsername">UserEmail</label>
                                 <div class="input-group">
@@ -81,6 +82,18 @@
                                 </div>
                             </div>
                             <div class="mb-3">
+                                <label class="text-label form-label" for="validationCustomUsername">ADRESS</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"> <i class="fa fa-user" style="color:#ff9618;"></i>
+                                    </span>
+                                    <input type="text" name='adress' class="form-control" id="validationCustomUsername"
+                                        placeholder="Enter user ADRESS" required>
+                                    <div class="invalid-feedback">
+                                        Please Enter a useradress   .
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
                                 <label class="text-label form-label" for="dlab-password">Password *</label>
                                 <div class="input-group transparent-append">
                                     <span class="input-group-text"> <i class="fa fa-lock" style="color:#ff9618;"></i>
@@ -95,6 +108,10 @@
                                         Please Enter a username.
                                     </div>
                                 </div>
+                            </div>
+                            <div class="mb-4">
+                                <label class="mb-1"><strong>product image</strong></label>
+                                <input type="file" class="form-control mt-10" name="image" placeholder="Ex.350">
                             </div>
                             <div class="mb-3">
                                 <div class="form-check">
